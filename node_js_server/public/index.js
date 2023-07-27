@@ -438,6 +438,7 @@ let Full = Full_count;
 let Maintaince = Maintaince_count;
 
   updateBoxes(Online, Available, Full, Maintaince);
+  updateBins(Bins);
 
   updateGauge(Online, Available, Full, Maintaince);
 
@@ -483,6 +484,24 @@ function updateBoxes(Online, Available, Full, Maintaince) {
   FullDiv.innerHTML = Full;
   MaintainceDiv.innerHTML = Maintaince + " down";
 }
+
+function generateallbins() {
+  let html;
+  for (let i = 0; i < Device_Array.length; i++) {
+    html += `<h1>Bin${i+1}: `;
+    html += `${Device_Array[i].deviceId}</h1>`;
+    html += `<h1>Owner: ${Device_Array[i].user}</h1>`;
+    html += `<h1>Full: ${Device_Array[i].Full}</h1>`;
+    html += `<h1>Need Maintaince: ${Device_Array[i].Maintenance}</h1>`;
+    html += '<br><hr><br>'
+  }
+  return html;
+}
+function updateBins(Bins) {
+  let allbinsDiv = document.getElementById("allbins");
+  allbinsDiv.innerHTML = generateallbins();
+}
+
 
 function updateGauge(Online, Available, Full, Maintaince) {
   var Online_update = {
