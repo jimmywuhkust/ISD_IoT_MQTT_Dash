@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%=dashboardTitle%></title>
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Symbols+Sharp"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.plot.ly/plotly-2.16.1.min.js"></script>
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <aside>
+        <div class="top">
+          <div class="logo">
+            <img src="images/logo.png" alt="" />
+            <h2><%=name%></h2>
+          </div>
+          <div class="close" id="close-btn">
+            <span class="material-symbols-sharp"> close </span>
+          </div>
+        </div>
+        <div class="sidebar">
+          <a href="#" class="active">
+            <span class="material-symbols-sharp"> dashboard </span>
+            <h3>Dashboard</h3>
+          </a>
+        </div>
+      </aside>
+      <main>
+        <h1><%=dashboardTitle%></h1>
+        <div class="connection-status">
+          <h3>Connection Status: <span class="status">Disconnected</span></h3>
+        </div>
+        <div class="insights">
+          <div class="Online">
+            <div class="middle">
+              <div class="left">
+                <h3>Online</h3>
+                <h1 id="Online"></h1>
+              </div>
+              <div class="icon">
+                <span class="material-symbols-sharp"> online_prediction </span>
+              </div>
+            </div>
+          </div>
+          <!-- End of Online -->
+          <div class="Available">
+            <div class="middle">
+              <div class="left">
+                <h3>Available</h3>
+                <h1 id="Available"></h1>
+              </div>
+              <div class="icon">
+                <span class="material-symbols-sharp">
+                  event_available
+                </span>
+              </div>
+            </div>
+          </div>
+          <!-- End of Available -->
+          <div class="Full">
+            <div class="middle">
+              <div class="left">
+                <h3>Full</h3>
+                <h1 id="Full"></h1>
+              </div>
+              <div class="icon">
+                <span class="material-symbols-sharp"> event_busy </span>
+              </div>
+            </div>
+          </div>
+          <!-- End of Full -->
+          <div class="Maintaince">
+            <div class="middle">
+              <div class="left">
+                <h3>Maintaince</h3>
+                <h1 id="Maintaince"></h1>
+              </div>
+              <div class="icon">
+                <span class="material-symbols-sharp"> pending_actions </span>
+              </div>
+            </div>
+          </div>
+          <!-- End of Maintaince -->
+        </div>
+        <!-- End of Insights -->
+        <div class="histories">
+          <h2>Historical Charts</h2>
+          <div class="history-charts">
+            <div id="Online-history" class="history-divs"></div>
+            <div id="Available-history" class="history-divs"></div>
+            <div id="Full-history" class="history-divs"></div>
+            <div id="Maintaince-history" class="history-divs"></div>
+          </div>
+        </div>
+      </main>
+      <div class="right">
+        <div class="top">
+          <button id="menu-btn">
+            <span class="material-symbols-sharp"> menu </span>
+          </button>
+          <div class="theme-toggler">
+            <span class="material-symbols-sharp active"> light_mode </span>
+            <span class="material-symbols-sharp"> dark_mode </span>
+          </div>
+        </div>
+        <!-- End of top -->
+        <div class="gauge-charts">
+          <h2>Gauge Charts</h2>
+          <div class="item">
+            <div id="Online-gauge"></div>
+          </div>
+          <div class="item">
+            <div id="Available-gauge"></div>
+          </div>
+          <div class="item">
+            <div id="Full-gauge"></div>
+          </div>
+          <div class="item">
+            <div id="Maintaince-gauge"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="module" src="./index.js"></script>
+    <script type="module" src="./mqttService.js"></script>
+  </body>
+</html>
